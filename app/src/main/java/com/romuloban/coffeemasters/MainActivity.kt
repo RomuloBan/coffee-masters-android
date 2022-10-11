@@ -41,8 +41,8 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun FirstComposable() {
-    var name = remember { mutableStateOf("") }
-    Column() {
+    val name = remember { mutableStateOf("") }
+    Column {
         Text("Hello ${name.value}",
             modifier = Modifier
                 .padding(10.dp)
