@@ -19,7 +19,12 @@ import com.romuloban.coffeemasters.ui.theme.Alternative2
 
 @Preview(showBackground = true, widthDp = 400)
 @Composable
-fun Offer() {
+private fun Offer_Preview() {
+    Offer("My Title 1", "This the description")
+}
+
+@Composable
+fun Offer(title: String, description: String) {
     Image(painter = painterResource(R.drawable.background_pattern),
         contentDescription = "Background pattern",
         contentScale = ContentScale.FillWidth,
@@ -31,7 +36,7 @@ fun Offer() {
         horizontalAlignment =  Alignment.CenterHorizontally,
         modifier = Modifier.padding(16.dp)
     ) {
-        Text(text = "My Title",
+        Text(text = title,
             style = MaterialTheme.typography.h5,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
@@ -39,7 +44,7 @@ fun Offer() {
                 .padding(16.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "Description",
+        Text(text = description,
             style = MaterialTheme.typography.h6,
             modifier = Modifier
                 .background(Alternative2)
