@@ -29,7 +29,9 @@ fun App() {
                 AppTitle()
             }
         },
-        bottomBar = {}
+        bottomBar = {
+            Text("I'm a bottom bar")
+        }
     ) {
         OffersPage()
     }
