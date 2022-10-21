@@ -13,6 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.romuloban.coffeemasters.pages.InfoPage
+import com.romuloban.coffeemasters.pages.MenuPage
+import com.romuloban.coffeemasters.pages.OrderPage
 import com.romuloban.coffeemasters.ui.theme.CoffeeMastersTheme
 
 @Preview
@@ -37,10 +40,10 @@ fun App() {
         },
         content = {
             when(selectedRoute.value) {
-                Routes.MenuPage.route -> Text("Menu")
+                Routes.MenuPage.route -> MenuPage()
                 Routes.OffersPage.route -> OffersPage()
-                Routes.OrderPage.route -> Text("Order")
-                Routes.InfoPage.route -> Text("Info")
+                Routes.OrderPage.route -> OrderPage()
+                Routes.InfoPage.route -> InfoPage()
             }
         },
         bottomBar = {
