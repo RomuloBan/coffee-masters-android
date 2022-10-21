@@ -35,6 +35,14 @@ fun App() {
                 AppTitle()
             }
         },
+        content = {
+            when(selectedRoute.value) {
+                Routes.MenuPage.route -> Text("Menu")
+                Routes.OffersPage.route -> OffersPage()
+                Routes.OrderPage.route -> Text("Order")
+                Routes.InfoPage.route -> Text("Info")
+            }
+        },
         bottomBar = {
             NavBar(
                 selectedRoute = selectedRoute.value,
@@ -42,9 +50,7 @@ fun App() {
                 selectedRoute.value = newRoute
             })
         }
-    ) {
-        OffersPage()
-    }
+    )
 }
 
 @Composable
