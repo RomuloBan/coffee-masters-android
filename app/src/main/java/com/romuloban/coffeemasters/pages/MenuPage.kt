@@ -18,6 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.romuloban.coffeemasters.DataManager
 import com.romuloban.coffeemasters.Product
 import com.romuloban.coffeemasters.R
 import com.romuloban.coffeemasters.ui.theme.Alternative1
@@ -25,7 +26,7 @@ import com.romuloban.coffeemasters.ui.theme.CardBackground
 
 @Preview
 @Composable
-fun MenuPage() {
+fun MenuPage(dataManager: DataManager) {
     LazyColumn {
         items(5) {
             Card(
