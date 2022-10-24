@@ -3,8 +3,12 @@ package com.romuloban.coffeemasters.pages
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,21 +21,28 @@ import androidx.compose.ui.unit.dp
 import com.romuloban.coffeemasters.Product
 import com.romuloban.coffeemasters.R
 import com.romuloban.coffeemasters.ui.theme.Alternative1
+import com.romuloban.coffeemasters.ui.theme.CardBackground
 
 @Preview
 @Composable
 fun MenuPage() {
-
+    LazyColumn {
+        items(5) {
+            Card(
+                elevation = 2.dp,
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier
+                    .background(CardBackground)
+                    .padding(12.dp)
+            ) {
+                ProductItem(product = Product(1, "Dummy", 1.25, ""), onAdd = {})
+            }
+        }
+    }
 }
 
 
 fun Double.format(digits: Int) = "%.${digits}f".format(this)
-
-@Preview
-@Composable
-fun ProductItem_Preview() {
-    ProductItem(product = Product(1, "Dummy", 1.25, ""), onAdd = {})
-}
 
 
 @Composable
