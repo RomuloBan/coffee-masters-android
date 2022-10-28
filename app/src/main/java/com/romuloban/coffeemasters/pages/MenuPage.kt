@@ -18,25 +18,35 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.romuloban.coffeemasters.DataManager
 import com.romuloban.coffeemasters.Product
 import com.romuloban.coffeemasters.R
 import com.romuloban.coffeemasters.ui.theme.Alternative1
 import com.romuloban.coffeemasters.ui.theme.CardBackground
+import com.romuloban.coffeemasters.ui.theme.Primary
 
 @Preview
 @Composable
 fun MenuPage(dataManager: DataManager) {
     LazyColumn {
-        items(5) {
-            Card(
-                elevation = 2.dp,
-                shape = RoundedCornerShape(12.dp),
-                modifier = Modifier
-                    .background(CardBackground)
-                    .padding(12.dp)
-            ) {
-                ProductItem(product = Product(1, "Dummy", 1.25, ""), onAdd = {})
+        items(dataManager.menu) {
+            Text(it.name,
+                color = Primary,
+                modifier = Modifier.padding(10.dp, 20.dp, 10.dp, 10.dp)
+            )
+            it.products.forEach {
+                Card(
+                    elevation = 2.dp,
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier
+                        .background(CardBackground)
+                        .padding(12.dp)
+                ) {
+                    ProductItem(it, onAdd = {
+                        dataManager.cartAdd(it)
+                    })
+                }
             }
         }
     }
@@ -53,9 +63,8 @@ fun ProductItem(product: Product, onAdd: (Product)->Unit) {
             .fillMaxWidth()
             .background(Color.White)
     ) {
-
-        Image(
-            painter = painterResource(id = R.drawable.black_coffee),
+        AsyncImage(
+            model = product.imageUrl,
             contentDescription = "Image for ${product.name}",
             contentScale = ContentScale.FillWidth,
             modifier = Modifier
